@@ -1,5 +1,14 @@
 .display_die{
   text-align: center;
   vertical-align: middle;
-  
+
+}
+
+
+#hide-background2 {
+  display: none;
+}
+
+#hide-background1 {
+  display: visible;
 }

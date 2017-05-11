@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   $("button").click(function(event){
     if ($(event.target).attr("id") === "roll_button1") {
       var button_value = "roll1";
@@ -13,14 +12,7 @@ $(document).ready(function(){
     else {
       var button_value = "hold2";
     }
-
     play(player1, player2, button_value);
-
-    // var die = player1.dice(1, 7);
-    // console.log(die);
-    // var total_score = player1.cal_score(die, player1.VirtualPoints, button_value);
-    // console.log(total_score);
-    // console.log(button_value);
   });
 
 });
@@ -51,6 +43,8 @@ function play(player1, player2, button_value){
       //show player 1 total score, player 2 plays next
       player1.Score = player1.cal_score(die, player1.ActualPoints ,player1.VirtualPoints, button_value);
       $("#result1").text(player1.Score);
+      $("#hide-background1").hide();
+      $("#hide-background2").show();
     }
     else if (button_value === "roll2"){
       var die = player2.dice(1,7);
@@ -63,6 +57,8 @@ function play(player1, player2, button_value){
       //show player 2 total score, player 1 plays next
       player2.Score = player2.cal_score(die, player2.ActualPoints ,player2.VirtualPoints, button_value);
       $("#result2").text(player2.Score);
+      $("#hide-background2").hide();
+      $("#hide-background1").show();
     }
 
   }
@@ -104,9 +100,6 @@ player.prototype.cal_score = function(die, actual_points, virtual_points, button
   else if(die === 1){
     if(button_value === "roll1"){
       virtual_points.splice(0, virtual_points.length);
-      // for(i=0; i<virtual_points.length; i++){
-      //   actual_total_score = actual_total_score + virtual_points[i];
-      // }
     }
     else if(button_value === "roll2"){
         virtual_points.splice(0, virtual_points.length);
